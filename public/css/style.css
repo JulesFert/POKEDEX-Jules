@@ -1,0 +1,496 @@
+body {
+    background: rgb(184, 44, 44);
+    font-family: 'Bree Serif', sans-serif;
+    font-size: 2rem;
+    scroll-behavior: smooth;
+}
+/* --------------------PAGE HOME----------------------- */
+.wrapper {
+    height: 100%;
+    overflow-y: visible;
+}
+
+.header {
+    position: relative;
+}
+
+.header_img {
+    position: absolute;
+    left: 36rem;
+    top: 8rem;
+    height: 35rem;
+    z-index: -1;
+}
+
+.header__title {
+    position: absolute;
+    margin-left: 2rem;
+    margin-top: 8rem;
+    margin-bottom: 0;
+    font-size: 5.5rem;
+    text-align: center;
+    letter-spacing: 0.2rem;
+    width: 45%;
+    line-height: 6rem;
+    border-radius: 25px;
+    padding: 30px 10px;
+    color: rgb(226, 214, 214);
+    /* background: rgba(0, 0, 0, 0.548); */
+     background-color: rgb(0, 0, 0, 0.253);
+}
+
+.header__title::after {
+    content: 'Jules Fert - 2023';
+    font-size: 1rem;
+    display: block;
+    height: 60px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    overflow-y: hidden;
+}
+
+.menu_item {
+    align-self: center;
+}
+
+.menu li {
+    list-style-type: none;
+}
+
+.menu_item a {
+    text-decoration: none;
+    color: white;
+}
+
+.menu_list {
+    width: 30rem;
+    height: 6rem;
+    text-align: center;
+    font-size: 1.5rem;
+    /* border: 2px white solid; */
+    width: 30rem;
+    padding: 1rem 1rem 1rem 0;
+    margin-top: 2rem;
+    margin-right: 3.5rem;
+    border-radius: 20px;
+    background: rgb(226, 214, 214);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.menu_list img {
+    height: 100px;
+    width: 200px;
+    object-fit: contain;
+}
+
+.menu_list a {
+    color: rgb(184, 44, 44);
+    font-size: 2.5rem;
+}
+
+.menu li {
+    position: relative;
+    left: 0;
+    transition: left 200ms ease-in-out;
+    cursor: pointer;
+}
+
+.menu li:hover {
+    left: -10px;
+}
+
+/* ---------------- NAVBAR ---------------------------- */
+.nav {
+    background: rgb(226, 214, 214);
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px 10px 15px;
+    border-radius: 25px;
+    width: 90%;
+    gap: 2rem;
+    margin: 25px auto;
+}
+
+.nav__link {
+   list-style-type: none;
+   text-decoration: none;
+   color: rgb(184, 44, 44);
+}
+
+.second-element {
+    display: flex;
+    gap: 25px;
+}
+/* ------------ EFFET DE HOVER SUR LES LIENS DE LA NAV ---------- */
+.nav li {
+    position: relative;
+    top: 0;
+    transition: top 200ms ease-in-out;
+    cursor: pointer;
+}
+
+.nav li:hover {
+    top: -5px;
+}
+/* ---------------------------------------------------------- */
+
+/* ----------------- PAGE LIST --------------------------- */
+
+.pokemon__list {
+    width: 90%;
+    margin: 5px auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.pokemon {
+    width: 30%;
+    background: rgba(0, 0, 0, 0.253);
+    border-radius: 20px;
+    text-align: center;
+    margin: 10px;
+    padding: 15px;
+}
+
+.pokemon {
+    transition: 200ms ease-in-out;
+    cursor: pointer;
+}
+
+.pokemon:hover {
+    transform: scale(1.02);
+    background: rgba(0, 0, 0, 0.527);
+}
+
+.pokemon__name {
+    color: rgb(226, 214, 214);
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.pokemon__link {
+    text-decoration: none;
+}
+/* -------------------------PAGE DETAILS D'UN POKEMON --------------------------------- */
+
+.details__title {
+    color: rgb(226, 214, 214);
+    text-align: center;
+    margin: 1rem;
+    width: 50%;
+    padding-left: 44rem;
+    font-size: 3rem;
+}
+
+.container__details {
+    display: flex;
+    justify-content: space-around;
+    /* gap: 10px; */
+}
+
+.left__content {
+    margin-left: 5rem;
+}
+
+.right__content {
+    color: rgb(226, 214, 214);
+    width: 63rem;
+    height: 25rem;
+    background-color: rgb(0, 0, 0, 0.253);
+    border-radius: 20px;
+    padding: 15px;
+}
+
+.pokemon__img {
+    width: 450px;
+    height: auto;
+}
+
+.details__pokemon__name {
+    text-align: start;
+    font-size: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.details__type {
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+}
+
+.container__type {
+    display: flex;
+    gap: 10px;
+    margin: 1rem 0;
+}
+
+.stats__title {
+    margin: 0 0 1rem 0;
+}
+
+table {
+    table-layout: fixed;
+    border-collapse : separate;
+    border-spacing : 5px;
+    width: 100%;
+}
+
+.bodyTable {
+    font-size: 1.2rem;
+    color: rgb(226, 214, 214);
+}
+
+.ligne__flex {
+    position: relative;
+}
+
+.col1 {
+    width: 2rem;;
+}
+
+.col2 {
+    width: 5rem;
+    text-align: center;
+}
+
+.stat {
+    text-align: left;
+    padding-bottom: 0.5rem;
+}
+
+.flex {
+    display: flex;
+    margin-top: -40px;
+}
+
+.first {
+    width: 35rem;
+}
+.second h4 {
+    margin: 0 0 0.5rem 0;
+}
+
+.second {
+    width: 25rem;
+    height: 10rem;
+    position: relative;
+}
+
+.description {
+    font-size: 1.2rem;
+    text-align: justify;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.container__size {
+    /* display: flex; */
+    position: absolute;
+    top: 165px;
+    left: 67px;
+}
+.size, .weight {
+    margin: 0;
+    width: 15rem;
+    text-align: start;
+}
+
+.infos {
+    margin: 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.return {
+    position: relative;
+    margin: 1rem auto;
+    width: 15rem;
+    height: 1rem;
+}
+
+.return a {
+    position: absolute;
+    bottom: 0px;
+    text-decoration: none;
+    color: rgba(226, 214, 214, 0.685);
+    font-size: 1.5rem;
+    transition: 0.2s ease-in-out;
+    width: 22rem;
+}
+
+.return a:hover {
+   color: rgba(226, 214, 214, 0.87);
+}
+
+.test__flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.deuxieme h4 {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.second {
+    margin-right: 6rem;
+}
+
+.bottom_buttons {
+    display: flex;
+}
+
+.button strong {
+    font-weight: bold;
+}
+
+/* -------------------------------PAGE DES TYPES ----------------- */
+
+.type_title {
+    color: rgb(226, 214, 214);
+    text-align: center;
+    font-size: 3rem;
+}
+
+.type {
+    width: 100%;
+}
+
+.list_type_container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 5rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.list_type {
+    padding: 5px;
+    font-size: 1.5rem;
+    list-style-type: none;
+    height: 5rem;
+    width: 25rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    border-radius: 10px;
+}
+
+.type_link {
+    text-decoration: none;
+    color: rgb(226, 214, 214);
+    transition: 0.2s ease-in-out;
+}
+
+.type_link:hover {
+    transform: scale(1.05);
+    color: black;
+}
+
+/* ------------PAGE CREDIT--------------- */
+
+.credit_title {
+    color: rgb(226, 214, 214);
+    width: 100%;
+    text-align: center;
+    margin: 1.5rem auto;
+    font-weight: bold;
+}
+
+.credit_list_item {
+    margin: 0.5rem auto;
+    color: rgb(226, 214, 214);
+    width: 80%;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem auto;
+
+    color: rgb(226, 214, 214);
+    width: 63rem;
+    height: 25rem;
+    background-color: rgb(0, 0, 0, 0.253);
+    border-radius: 20px;
+    padding: 15px;
+}
+
+.detective_pikachu {
+    width: 22rem;
+    margin-left: 10rem;
+}
+
+.flex_list {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.flex_list a {
+    position: relative;
+    top: 0;
+    transition: top 200ms ease-in-out;
+    cursor: pointer;
+}
+
+.flex_list a:hover {
+    top: -5px;
+}
+
+#linkedin {
+    width: 2rem;
+}
+
+#twitter {
+    width: 2rem;
+}
+
+#github {
+    width: 2rem;
+}
+
+/* ---------------------PAGE COMPARATEUR DE TYPE ---------------- */
+
+.comparator_container {
+    height: 20rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+select {
+    appearance: none;
+    outline: 0;
+    border: 0;
+    background-color: rgb(226, 214, 214);
+    background-image: none;
+    box-shadow: none;
+    font-size: 1.6rem;
+    border-radius: 10px;
+    padding: 3px;
+}
+
+
+/* -----------FOOTER------------- */
+.footer__text {
+    color:rgb(226, 214, 214);
+    font-size: 1.2rem;
+    margin: 0 0 0.5rem 0.5rem;
+}

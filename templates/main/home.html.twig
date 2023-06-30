@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="wrapper-container">
+    <div class="wrapper">
+
+        <div class="header">
+            <h1 class="header__title">Bienvenue sur le Pokédex !</h1>
+            <img class="header_img" src="{{ asset("img/25.png") }}" alt="image-pikachu">
+        </div>
+
+        <section class="menu">
+            <li class="menu_list">
+                <img src="{{ asset("img/others-img/pokeball2-.png") }}" alt="pokeball">
+                <h2 class="menu_item"><a href="{{ path('app_pokemon_list') }}">Liste</a></h2>
+            </li>
+            <li class="menu_list">
+                <img src="{{ asset("img/others-img/pokeball2-.png") }}" alt="pokeball">
+                <h2 class="menu_item"><a href="">Types</a></h2>
+            </li>
+            <li class="menu_list">
+                <img src="{{ asset("img/others-img/pokeball2-.png") }}" alt="pokeball">
+                <h2 class="menu_item"><a href="">Comparateur</a></h2>
+            </li>
+            <li class="menu_list">
+                <img src="{{ asset("img/others-img/pokeball2-.png") }}" alt="pokeball">
+                <h2 class="menu_item"><a href="">Crédits</a></h2>
+            </li>
+        </section>
+    </div>
+</div>
+{% endblock %}
+
