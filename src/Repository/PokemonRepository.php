@@ -39,6 +39,36 @@ class PokemonRepository extends ServiceEntityRepository
         }
     }
 
+    public function findByNumber($id) {
+
+        $em = $this->getEntityManager();
+
+        $query = $em->createQuery(
+            'SELECT p FROM App\Entity\Pokemon p
+             WHERE p.number = :pokemon'
+        )->setParameter('pokemon', $id);
+
+        return $query->getResult();
+    }
+
+    // public function findWithTypes($number) {
+
+    //     $em = $this->getEntityManager();
+
+    //     $query = $em->createQuery(
+    //         "SELECT pokemon, type.name as nomType, number, pokemon.id, type.color as couleur, 
+    //          pokemon.hp as PV, pokemon.attack as Attaque, pokemon.defense as Défense, 
+    //          pokemon.spe_attack as AttaqueSP, pokemon.spe_defense as DéfenseSP, pokemon.speed as Vitesse, description, size, weight
+    //          FROM
+    //          `pokemon`
+    //          JOIN pokemon_type ON pokemon_type.pokemon_number=pokemon.number 
+    //         JOIN type ON pokemon_type.type_id=type.id
+    //         WHERE number = :number"
+    //     )->setParameter('number', $number);
+        
+    //     return $query->getResult();
+    // }
+
 //    /**
 //     * @return Pokemon[] Returns an array of Pokemon objects
 //     */

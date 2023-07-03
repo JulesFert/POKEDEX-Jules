@@ -228,6 +228,10 @@ body {
     font-size: 1.5rem;
 }
 
+.details__type__img {
+    height: 2rem;
+}
+
 .container__type {
     display: flex;
     gap: 10px;

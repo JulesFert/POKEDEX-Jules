@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PokemonRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -71,6 +73,22 @@ class Pokemon
      * @ORM\Column(type="float")
      */
     private $weight;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Type::class, inversedBy="pokemons")
+     */
+    private $types;
+
+    /**
+     * @ORM\OneToMany(targetEntity=PokemonType::class, mappedBy="pokemonNumber")
+     */
+    private $pokemonTypes;
+
+    public function __construct()
+    {
+        $this->types = new ArrayCollection();
+        $this->pokemonTypes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -205,6 +223,60 @@ class Pokemon
     public function setWeight(float $weight): self
     {
         $this->weight = $weight;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Type>
+     */
+    public function getTypes(): Collection
+    {
+        return $this->types;
+    }
+
+    public function addType(Type $type): self
+    {
+        if (!$this->types->contains($type)) {
+            $this->types[] = $type;
+        }
+
+        return $this;
+    }
+
+    public function removeType(Type $type): self
+    {
+        $this->types->removeElement($type);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, PokemonType>
+     */
+    public function getPokemonTypes(): Collection
+    {
+        return $this->pokemonTypes;
+    }
+
+    public function addPokemonType(PokemonType $pokemonType): self
+    {
+        if (!$this->pokemonTypes->contains($pokemonType)) {
+            $this->pokemonTypes[] = $pokemonType;
+            $pokemonType->setPokemonNumber($this);
+        }
+
+        return $this;
+    }
+
+    public function removePokemonType(PokemonType $pokemonType): self
+    {
+        if ($this->pokemonTypes->removeElement($pokemonType)) {
+            // set the owning side to null (unless already changed)
+            if ($pokemonType->getPokemonNumber() === $this) {
+                $pokemonType->setPokemonNumber(null);
+            }
+        }
 
         return $this;
     }

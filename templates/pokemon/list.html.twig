@@ -4,12 +4,14 @@
 
 <section class="pokemon__list">
 
-    {% for pokemon in pokemons %}
+    {# {{dump(pokemonApi)}} #}
+
+    {% for pokemon in pokemonApi %}
 
         <article class="pokemon">
             <a class="pokemon__link" href="{{ path('app_pokemon_details', {id: pokemon.id}) }}">
-                <img class="pokemonImg" src="{{asset('img/' ~ pokemon.number ~ '.png')}}" alt="image-{{pokemon.name}}">
-                <p class="pokemon__name">#{{pokemon.number}} {{pokemon.name}}</p>
+                <img class="pokemonImg" src="{{pokemon.image}}" alt="image-{{pokemon.name}}">
+                <p class="pokemon__name">#{{pokemon.pokedexId}} {{pokemon.name}}</p>
             </a>
         </article>
 

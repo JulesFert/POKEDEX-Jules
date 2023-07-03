@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Pokemon;
 use App\Repository\PokemonRepository;
+use App\Service\CallApiService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,14 +16,17 @@ class PokemonController extends AbstractController
      * Permet l'affichage de la liste des pokémons
      * @Route("/pokemon/list", name="app_pokemon_list")
      */
-    public function list(PokemonRepository $pr)
+    public function list(PokemonRepository $pr, CallApiService $callApiService)
     {
        // on récupère les données du model
        $pokemons = $pr->findAll();
 
+       $pokemonApi = $callApiService->getAllPokemonData();
+
        // on retourne une réponse
        return $this->render('pokemon/list.html.twig', [
            'pokemons' => $pokemons,
+           'pokemonApi' => $pokemonApi,
        ]);
     }
 
@@ -32,13 +37,30 @@ class PokemonController extends AbstractController
      * @param [type] $id
      * @return void
      */
-    public function details(PokemonRepository $pr, $id) {
-        // on récupère les données du model
-       $pokemon = $pr->find($id);
+    public function details(PokemonRepository $pr, $id, CallApiService $callApiService) {
+
+        // pokémon API
+        $pokemon = $callApiService->getOnePokemonById($id);
+
+        // pokémon BDD
+        $pokemonBDD = $pr->findByNumber($id);
+        //dd($pokemonBDD);
+
+        // Trouver l'index du pokémon actuel dans la liste
+        $currentIndex = $pokemon['id'];
+
+        // Récupérer les identifiants des pokémons précédent et suivant
+        $previousPokemonNumber = 
+        $nextPokemonNumber = 
 
        // on retourne une réponse
        return $this->render('pokemon/details.html.twig', [
            'pokemon' => $pokemon,
+           'pokemonBDD' => $pokemonBDD[0],
+           'currentIndex' => $currentIndex,
+            'previousPokemonNumber' => $previousPokemonNumber,
+            'nextPokemonNumber' => $nextPokemonNumber,
+
        ]);
     }
 

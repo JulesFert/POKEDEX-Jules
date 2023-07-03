@@ -4,30 +4,31 @@
 
 <div class="container__details">
     <section class="left__content">
-        <img class="pokemon__img" src="{{asset('img/' ~ pokemon.number ~ '.png')}}" alt="image-pokemon">
+        <img class="pokemon__img" src="{{pokemon.image}}" alt="image-pokemon">
     </section>
 
     <section class="right__content">
         <div class="test__flex">
             <div class="premier">
-                <h3 class="details__pokemon__name">#{{pokemon.number}} {{pokemon.name}}</h3>
+                <h3 class="details__pokemon__name">#{{pokemon.pokedexId}} {{pokemon.name}}</h3>
                 <div class="container__type">
 
-                    {# boucle for pour les types à faire ici #}
-                        {# <div style="background-color:#{{ $type->color }};" class="details__type">{{ $type->name }}</div> #}
-                    {#  #}
+                    {% for type in pokemon.apiTypes %}
+                        <div class="details__type">{{ type.name }}</div>
+                        <img class="details__type__img" src="{{type.image}}" alt="type_img">
+                    {% endfor %}
 
                 </div>
             </div>
             <div class="deuxieme">
                 <div class="second">
                     <h4>Description</h4>
-                    <p class="description">{{pokemon.description}}</p>
+                    <p class="description">{{pokemonBDD.description}}</p>
                     <div class="container__size">
                         <h4 class="size">Taille</h4>
-                        <p class="infos">{{pokemon.size}}m</p>
+                        <p class="infos">{{pokemonBDD.size}}</p>
                         <h4 class="weight">Poids</h4>
-                        <p class="infos">{{pokemon.weight}}kg</p>
+                        <p class="infos">{{pokemonBDD.weight}}</p>
                     </div>
                 </div>
             </div>
@@ -40,49 +41,49 @@
                 <tbody class="bodyTable">
                     <tr>
                         <th class="stat" scope="col">HP</th>
-                        <th class="stat" scope="col">{{pokemon.hp}}</th>
+                        <th class="stat" scope="col">{{pokemon.stats.HP}}</th>
                     </tr>
                     <tr>
                         <th class="stat" scope="col">Attaque</th>
-                        <th class="stat" scope="col">{{pokemon.attack}}</th>
+                        <th class="stat" scope="col">{{pokemon.stats.attack}}</th>
                     </tr>
                     <tr>
                         <th class="stat" scope="col">Defense</th>
-                        <th class="stat" scope="col">{{pokemon.defense}}</th>
+                        <th class="stat" scope="col">{{pokemon.stats.defense}}</th>
                     </tr>
                     <tr>
                         <th class="stat" scope="col">Attaque spé</th>
-                        <th class="stat" scope="col">{{pokemon.speAttack}}</th>
+                        <th class="stat" scope="col">{{pokemon.stats.special_attack}}</th>
                     </tr>
                     <tr>
                         <th class="stat" scope="col">Défense spé</th>
-                        <th class="stat" scope="col">{{pokemon.speDefense}}</th>
+                        <th class="stat" scope="col">{{pokemon.stats.special_defense}}</th>
                     </tr>
                     <tr>
                         <th class="stat" scope="col">Vitesse</th>
-                        <th class="stat" scope="col">{{pokemon.speed}}</th>
+                        <th class="stat" scope="col">{{pokemon.stats.speed}}</th>
                     </tr>
                 </tbody>
             </table>
     </div>
 </div>
-
     </section>
 </div>
 
 <div class="bottom_buttons">
-    {# @if ($previousPokemonNumber)
+    {% if previousPokemonNumber %}
         <div class="return">
             <a class="button" href="{{ route('pokemon-details', $previousPokemonNumber) }}">Précédent : <strong>{{$pokemons[$currentIndex - 1]->name}}</strong></a>
         </div>
-    @endif
+    {% endif %}
     <div class="return">
-            <a class="button" href="{{ route('pokemon-list') }}">Revenir à la liste</a>
+            <a class="button" href="{{ path('app_pokemon_list') }}">Revenir à la liste</a>
     </div>
-    @if ($nextPokemonNumber)
+    {% if previousPokemonNumber %}
         <div class="return">
             <a class="button" href="{{ route('pokemon-details', $nextPokemonNumber) }}">Suivant : <strong>{{$pokemons[$currentIndex + 1]->name}}</strong></a>
         </div>
-    @endif #}
+    {% endif %}
 </div>
 {% endblock %}
+
