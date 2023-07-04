@@ -32,6 +32,14 @@
                     <div class="first-element">
                         <a class="nav__link" href="{{path('app_main_home')}}"><li>Menu principal</li></a>
                    </div>
+                    <div class="pipe">|</div>
+                    <div class="third-element">
+                        <a class="nav__link" href="{{ path('app_pokemon_list') }}"><li>Génération 1</li></a>
+                        <a class="nav__link" href="{{ path('app_pokemon_list', {number: 2}) }}"><li>Génération 2</li></a>
+                        <a class="nav__link" href="{{ path('app_pokemon_list', {number: 3}) }}"><li>Génération 3</li></a>
+                        <a class="nav__link" href="{{ path('app_pokemon_list', {number: 4}) }}"><li>Génération 4</li></a>
+                    </div>
+                   <div class="pipe">|</div>
                     <div class="second-element">
                         <a class="nav__link" href="{{ path('app_pokemon_list') }}"><li>Liste</li></a>
                         <a class="nav__link" href=""><li>Types</li></a>

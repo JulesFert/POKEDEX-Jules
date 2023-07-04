@@ -13,9 +13,9 @@
                 <h3 class="details__pokemon__name">#{{pokemon.pokedexId}} {{pokemon.name}}</h3>
                 <div class="container__type">
 
+                    <div class="details__type">Type(s) :</div>
                     {% for type in pokemon.apiTypes %}
-                        <div class="details__type">{{ type.name }}</div>
-                        <img class="details__type__img" src="{{type.image}}" alt="type_img">
+                        <img title="{{type.name}}" class="details__type__img" src="{{type.image}}" alt="type_img">
                     {% endfor %}
 
                 </div>
@@ -26,9 +26,9 @@
                     <p class="description">{{pokemonBDD.description}}</p>
                     <div class="container__size">
                         <h4 class="size">Taille</h4>
-                        <p class="infos">{{pokemonBDD.size}}</p>
+                        <p class="infos">{{pokemonBDD.size}} m</p>
                         <h4 class="weight">Poids</h4>
-                        <p class="infos">{{pokemonBDD.weight}}</p>
+                        <p class="infos">{{pokemonBDD.weight}} kg</p>
                     </div>
                 </div>
             </div>
@@ -71,19 +71,20 @@
 </div>
 
 <div class="bottom_buttons">
-    {% if previousPokemonNumber %}
+    {% if previousPokemonNumber > 0 %}
         <div class="return">
-            <a class="button" href="{{ route('pokemon-details', $previousPokemonNumber) }}">Précédent : <strong>{{$pokemons[$currentIndex - 1]->name}}</strong></a>
+            <a class="button" href="{{ path('app_pokemon_details', {id: previousPokemonNumber}) }}">Précédent : <strong>{{ previousPokemon.name }}</strong></a>
         </div>
     {% endif %}
     <div class="return">
             <a class="button" href="{{ path('app_pokemon_list') }}">Revenir à la liste</a>
     </div>
-    {% if previousPokemonNumber %}
+    {% if nextPokemonNumber < 151 %}
         <div class="return">
-            <a class="button" href="{{ route('pokemon-details', $nextPokemonNumber) }}">Suivant : <strong>{{$pokemons[$currentIndex + 1]->name}}</strong></a>
+            <a class="button" href="{{ path('app_pokemon_details', {id: nextPokemonNumber}) }}">Suivant : <strong>{{ nextPokemon.name }}</strong></a>
         </div>
     {% endif %}
 </div>
+
 {% endblock %}
 

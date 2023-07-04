@@ -13,11 +13,14 @@ class CallApiService {
         $this->client = $client;
     }
 
-    public function getAllPokemonData(): array {
+    public function getAllPokemonData($number = null): array {
+        if($number === null) {
+            $number = 1;
+        }
 
         $response = $this->client->request(
             'GET',
-            'https://pokebuildapi.fr/api/v1/pokemon/generation/1'
+            "https://pokebuildapi.fr/api/v1/pokemon/generation/$number"
         );
 
         return $response->toArray();

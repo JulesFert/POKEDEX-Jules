@@ -129,6 +129,15 @@ body {
     display: flex;
     gap: 25px;
 }
+
+.third-element {
+    display: flex;
+    gap: 25px;
+}
+
+.pipe {
+    color: rgb(184, 44, 44);
+}
 /* ------------ EFFET DE HOVER SUR LES LIENS DE LA NAV ---------- */
 .nav li {
     position: relative;

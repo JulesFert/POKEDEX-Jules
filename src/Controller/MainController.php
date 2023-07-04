@@ -18,4 +18,13 @@ class MainController extends AbstractController
         return $this->render('main/home.html.twig');
     }
 
+    /**
+     * @Route("/credits", name="app_main_credits")
+     */
+    public function credits(): Response
+    {
+        // on retourne une réponse
+        return $this->render('main/credits.html.twig');
+    }
+
 }
