@@ -1,90 +1,97 @@
 {% extends "base-2.html.twig" %}
 {% block body %}
-<h2 class="details__title">Détails de {{pokemon.name}}</h2>
+	<h2 class="details__title">Détails de
+		{{pokemon.name}}</h2>
 
-<div class="container__details">
-    <section class="left__content">
-        <img class="pokemon__img" src="{{pokemon.image}}" alt="image-pokemon">
-    </section>
+	<div class="container__details">
+		<section class="left__content">
+			<img class="pokemon__img" src="{{pokemon.image}}" alt="image-pokemon">
+		</section>
 
-    <section class="right__content">
-        <div class="test__flex">
-            <div class="premier">
-                <h3 class="details__pokemon__name">#{{pokemon.pokedexId}} {{pokemon.name}}</h3>
-                <div class="container__type">
+		<section class="right__content">
+			<div class="test__flex">
+				<div class="premier">
+					<h3 class="details__pokemon__name">#{{pokemon.pokedexId}}
+						{{pokemon.name}}</h3>
+					<div class="container__type">
 
-                    <div class="details__type">Type(s) :</div>
-                    {% for type in pokemon.apiTypes %}
-                        <img title="{{type.name}}" class="details__type__img" src="{{type.image}}" alt="type_img">
-                    {% endfor %}
+						<div class="details__type">Type(s) :</div>
+						{% for type in pokemon.apiTypes %}
+							<img title="{{type.name}}" class="details__type__img" src="{{type.image}}" alt="type_img">
+						{% endfor %}
 
-                </div>
-            </div>
-            <div class="deuxieme">
-                <div class="second">
-                    <h4>Description</h4>
-                    <p class="description">{{pokemonBDD.description}}</p>
-                    <div class="container__size">
-                        <h4 class="size">Taille</h4>
-                        <p class="infos">{{pokemonBDD.size}} m</p>
-                        <h4 class="weight">Poids</h4>
-                        <p class="infos">{{pokemonBDD.weight}} kg</p>
-                    </div>
-                </div>
-            </div>
+					</div>
+				</div>
+				<div class="deuxieme">
+					<div class="second">
+						<h4>Description</h4>
+						<p class="description">{{pokemonBDD.description}}</p>
+						<div class="container__size">
+							<h4 class="size">Taille</h4>
+							<p class="infos">{{pokemonBDD.size}}
+								m</p>
+							<h4 class="weight">Poids</h4>
+							<p class="infos">{{pokemonBDD.weight}}
+								kg</p>
+						</div>
+					</div>
+				</div>
 
-        </div>
-<div class="flex">
-    <div class="first">
-        <h4 class="stats__title">Statistiques</h4>
-            <table>
-                <tbody class="bodyTable">
-                    <tr>
-                        <th class="stat" scope="col">HP</th>
-                        <th class="stat" scope="col">{{pokemon.stats.HP}}</th>
-                    </tr>
-                    <tr>
-                        <th class="stat" scope="col">Attaque</th>
-                        <th class="stat" scope="col">{{pokemon.stats.attack}}</th>
-                    </tr>
-                    <tr>
-                        <th class="stat" scope="col">Defense</th>
-                        <th class="stat" scope="col">{{pokemon.stats.defense}}</th>
-                    </tr>
-                    <tr>
-                        <th class="stat" scope="col">Attaque spé</th>
-                        <th class="stat" scope="col">{{pokemon.stats.special_attack}}</th>
-                    </tr>
-                    <tr>
-                        <th class="stat" scope="col">Défense spé</th>
-                        <th class="stat" scope="col">{{pokemon.stats.special_defense}}</th>
-                    </tr>
-                    <tr>
-                        <th class="stat" scope="col">Vitesse</th>
-                        <th class="stat" scope="col">{{pokemon.stats.speed}}</th>
-                    </tr>
-                </tbody>
-            </table>
-    </div>
-</div>
-    </section>
-</div>
+			</div>
+			<div class="flex">
+				<div class="first">
+					<h4 class="stats__title">Statistiques</h4>
+					<table>
+						<tbody class="bodyTable">
+							<tr>
+								<th class="stat" scope="col">HP</th>
+								<th class="stat" scope="col">{{pokemon.stats.HP}}</th>
+							</tr>
+							<tr>
+								<th class="stat" scope="col">Attaque</th>
+								<th class="stat" scope="col">{{pokemon.stats.attack}}</th>
+							</tr>
+							<tr>
+								<th class="stat" scope="col">Defense</th>
+								<th class="stat" scope="col">{{pokemon.stats.defense}}</th>
+							</tr>
+							<tr>
+								<th class="stat" scope="col">Attaque spé</th>
+								<th class="stat" scope="col">{{pokemon.stats.special_attack}}</th>
+							</tr>
+							<tr>
+								<th class="stat" scope="col">Défense spé</th>
+								<th class="stat" scope="col">{{pokemon.stats.special_defense}}</th>
+							</tr>
+							<tr>
+								<th class="stat" scope="col">Vitesse</th>
+								<th class="stat" scope="col">{{pokemon.stats.speed}}</th>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</section>
+	</div>
 
-<div class="bottom_buttons">
-    {% if previousPokemonNumber > 0 %}
-        <div class="return">
-            <a class="button" href="{{ path('app_pokemon_details', {id: previousPokemonNumber}) }}">Précédent : <strong>{{ previousPokemon.name }}</strong></a>
-        </div>
-    {% endif %}
-    <div class="return">
-            <a class="button" href="{{ path('app_pokemon_list') }}">Revenir à la liste</a>
-    </div>
-    {% if nextPokemonNumber < 151 %}
-        <div class="return">
-            <a class="button" href="{{ path('app_pokemon_details', {id: nextPokemonNumber}) }}">Suivant : <strong>{{ nextPokemon.name }}</strong></a>
-        </div>
-    {% endif %}
-</div>
+	<div class="bottom_buttons">
+		{% if previousPokemonNumber > 0 %}
+			<div class="return">
+				<a class="button" href="{{ path('app_pokemon_details', {id: previousPokemonNumber}) }}">Précédent :
+					<strong>{{ previousPokemon.name }}</strong>
+				</a>
+			</div>
+		{% endif %}
+		<div class="return">
+			<a class="button" href="{{ path('app_pokemon_list') }}">Revenir à la liste</a>
+		</div>
+		{% if nextPokemonNumber < 898 %}
+			<div class="return">
+				<a class="button" href="{{ path('app_pokemon_details', {id: nextPokemonNumber}) }}">Suivant :
+					<strong>{{ nextPokemon.name }}</strong>
+				</a>
+			</div>
+		{% endif %}
+	</div>
 
 {% endblock %}
-

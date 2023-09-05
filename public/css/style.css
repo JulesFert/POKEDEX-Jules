@@ -83,6 +83,16 @@ body {
     justify-content: space-between;
 }
 
+.menu_list a {
+    display: flex;
+    text-decoration: none;
+}
+
+.menu_list a h2 {
+    position: absolute;
+    right: 10px;
+}
+
 .menu_list img {
     height: 100px;
     width: 200px;
