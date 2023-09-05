@@ -2,42 +2,49 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Type;
+use App\Repository\TypeRepository;
+use App\Service\CallApiService;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class TypeController extends AbstractController
 {
     /**
-     * @Route("/type", name="app_type")
+     * Route pour afficher la page listant tous les types
+     * @Route("/type/list", name="app_type_list")
      */
-    public function index(): Response
+    public function types(TypeRepository $tr)
     {
-        return $this->render('type/index.html.twig', [
-            'controller_name' => 'TypeController',
-        ]);
-    }
-
-    public function types() {
 
         // on récupère les types
-        $types = Type::all();
+        $types = $tr->findAll();
 
         // on retourne la liste des types avec la vue
-        return view ('types', [
+        return $this->render('type/types.html.twig', [
             'types' => $types,
             'header' => true,
         ]);
     }
 
-    public function comparator() {
+    /**
+     * Route pour afficher les pokémons du type en question
+     * @Route("/type/{id}", name="pokemon_list_type")
+     */
+    public function listByType(TypeRepository $tr, $id, CallApiService $api)
+    {
 
-        // on récupère les types
-        $types = Type::all();
+        // on récupère le type en question
+        $type = $tr->find($id);
+
+        // on récupère les pokémons de ce type
+        $list = $api->getPokemonsByOneType($type->getName());
 
         // on retourne la view
-        return view('comparator', [
-            'types' => $types,
+        return $this->render('type/listpokemons.html.twig', [
+            'type' => $type,
+            'list' => $list,
             'header' => true,
         ]);
     }

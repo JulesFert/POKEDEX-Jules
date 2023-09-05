@@ -1,0 +1,25 @@
+{% extends "base-2.html.twig" %}
+
+{% block body %}
+
+	<section class="pokemon__list">
+		<h2 class="type_title type">Pokémons avec le type
+			{{ type.name }}</h2>
+
+		{% for pokemon in list %}
+			<article class="pokemon">
+				<a class="pokemon__link" href="{{ path('app_pokemon_details', {'id': pokemon.id}) }}">
+					<img class="pokemonImg" src="{{ pokemon.image }}" alt="image-{{ pokemon.name }}">
+					<p class="pokemon__name">#{{ pokemon.id }}
+						{{ pokemon.name }}</p>
+				</a>
+			</article>
+		{% endfor %}
+
+	</section>
+
+	<div class="return">
+		<a href="{{ path('app_type_list') }}">Revenir aux types</a>
+	</div>
+
+{% endblock %}

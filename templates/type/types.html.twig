@@ -1,0 +1,20 @@
+{% extends "base-2.html.twig" %}
+
+{% block body %}
+
+	<h2 class="type_title">Liste des types</h2>
+
+	<div class="list_type_container">
+
+		{% for type in types %}
+
+			<a class="type_link" href="{{ path('pokemon_list_type', {'id': type.id}) }}">
+				<li style="background-color:#{{ type.color }};" class="list_type">
+					<p>{{ type.name }}</p>
+				</li>
+			</a>
+
+		{% endfor %}
+	</div>
+
+{% endblock %}
