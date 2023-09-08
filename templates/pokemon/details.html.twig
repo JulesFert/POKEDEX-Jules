@@ -83,7 +83,7 @@
 			</div>
 		{% endif %}
 		<div class="return">
-			<a class="button" href="{{ path('app_pokemon_list') }}">Revenir à la liste</a>
+			<a class="button" href="{{ path('app_pokemon_list', {number: pokemon.apiGeneration}) }}">Revenir à la liste</a>
 		</div>
 		{% if nextPokemonNumber < 898 %}
 			<div class="return">
